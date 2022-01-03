@@ -1,0 +1,5 @@
+name: MoreFishes
+version: '${project.version}'
+main: me.monkeykiller.morefishes.MoreFishes
+api-version: 1.17
+authors: [ MonkeyKiller ]

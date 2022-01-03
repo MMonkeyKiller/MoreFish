@@ -1,0 +1,39 @@
+# Only add custom fishes to the loot table if the original loot was a fish
+# Example:
+# Fishing throws a raw cod -> re-roll the loot table now with only custom fishes and the original result -> result can vary between vanilla and custom fishes
+# Fishing throws an enchanted book -> result: enchanted book
+#
+# When it's disabled:
+# Fishing throws a pufferfish -> re-roll the loot table now with only custom fishes and the original result -> result can vary...
+# Fishing throws a tripwire -> re-roll the loot table now with only custom fishes and the original result -> result can vary...
+append_to_vanilla_fish_loot: true
+
+# Value between 0 and 1 (0 disables the custom fish obtaining)
+# 1 -> Fully replaces the vanilla fishing table
+custom_fish_loot_weight: 0.5
+
+# Fish weight measure suffix
+weight_measure: "oz"
+
+# Custom fishes
+fishes:
+  # How to add a custom fish:
+  # First, you need to replicate the following structure:
+  # - id: string
+  #   display_name: string            Item display name (You can use color codes)
+  #   lore: string || string[]        Item lore (You can use color codes)
+  #   material: string                Item type/material (see https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
+  #   fish_weight: (optional)
+  #     min: (number)                 Set to 1 by default
+  #     max: (number)                 Set to 10 by default
+  #   loot_weight: number (optional)  Chance of the loot (more weight = more chance) Set to 1 by default
+
+  - id: "dndcraft:example_fish"
+    display_name: "&eExample Fish"
+    lore:
+      - "&bA really cool fish"
+    material: COD
+    fish_weight:
+      min: 3
+      max: 10
+    loot_weight: 3
