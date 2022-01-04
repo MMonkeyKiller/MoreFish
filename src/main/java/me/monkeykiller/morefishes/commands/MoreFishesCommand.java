@@ -1,9 +1,6 @@
 package me.monkeykiller.morefishes.commands;
 
-import me.monkeykiller.morefishes.CustomFish;
-import me.monkeykiller.morefishes.ItemUtils;
-import me.monkeykiller.morefishes.MoreFishesConfig;
-import me.monkeykiller.morefishes.Utils;
+import me.monkeykiller.morefishes.*;
 import net.kyori.adventure.text.Component;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -12,6 +9,7 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class MoreFishesCommand extends BaseCommand {
@@ -66,12 +64,15 @@ public class MoreFishesCommand extends BaseCommand {
             return true;
         } else if (args[0].equalsIgnoreCase("appraise")) {
             return AppraiseCommand.INSTANCE.onCommand(sender, command, label, args);
+        } else if (args[0].equalsIgnoreCase("rank")) {
+            return FishRankCommand.INSTANCE.onCommand(sender, command, label, args);
         } else if (args[0].equalsIgnoreCase("reload")) {
             if (!sender.hasPermission("morefishes.command.reload")) {
                 sender.sendMessage(Utils.colorize("&cYou don't have permission to do this"));
                 return true;
             }
             MoreFishesConfig.reload();
+            MoreFishes.getHeaviestFishes().reload();
             sender.sendMessage(Utils.colorize("&aConfig reloaded successfully"));
             return true;
         }
@@ -80,9 +81,9 @@ public class MoreFishesCommand extends BaseCommand {
 
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender sender, @NotNull Command command, @NotNull String alias, @NotNull String[] args) {
-        if (args.length == 1) return List.of("give", "appraise", "reload");
+        if (args.length == 1) return List.of("give", "appraise", "rank", "reload");
         if (args.length == 2 && args[0].equalsIgnoreCase("give"))
             return CustomFish.getRegistry().stream().map(CustomFish::getId).toList();
-        return List.of();
+        return null;
     }
 }

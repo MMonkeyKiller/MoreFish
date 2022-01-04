@@ -51,13 +51,41 @@ fishes:
       min: 2
       max: 15
     loot_weight: 2
-    qualities:  # In this example always throws the legendary quality. (NOTE: You don't need to put all the qualities in this param. You can just modify whatever you want)
+    qualities: # In this example always throws the legendary quality. (NOTE: You don't need to put all the qualities in this param. You can just modify whatever you want)
       - id: "dndcraft:legendary_quality"
         weight: 15
       - id: "dndcraft:good_quality"
         weight: 0
       - id: "dndcraft:poor_quality"
         weight: 0
+  - id: "dndcraft:mullet"
+    display_name: "&eMullet"
+    lore:
+      - "&7A large red fish"
+    material: SALMON
+    fish_weight:
+      min: 17
+      max: 32
+    loot_weight: 1
+  - id: "dndcraft:alaska_pollock"
+    display_name: "&aAlaska Pollock"
+    lore:
+      - ""
+    material: COD
+    fish_weight:
+      min: 3
+      max: 8
+    loot_weight: 3
+  - id: "dndcraft:clownfish"
+    display_name: "&eClownfish"
+    lore:
+      - "&7Among the most recognizable"
+      - "&7of all reef-dwellers"
+    material: TROPICAL_FISH
+    fish_weight:
+      min: 6
+      max: 8
+    loot_weight: 5
 
 # Default quality threshold for every fish. You can customize it on every fish in the "qualities" param
 qualities:

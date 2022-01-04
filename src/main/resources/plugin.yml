@@ -13,9 +13,14 @@ commands:
       §cUsage:
       §c/<command> give <id> [count] [weight]
       §c/<command> appraise
+      §c/<command> rank
+      §c/<command> reload
   appraise:
     description: MoreFishes appraise command
     permission: morefishes.command.appraise
+  fishrank:
+    description: MoreFishes rank command
+    permission: morefishes.command.fishrank
 permissions:
   morefishes.command.give:
     description: Allows access to give custom fishes
@@ -26,3 +31,5 @@ permissions:
   morefishes.command.reload:
     description: Allows access to reload the plugin configurations
     default: op
+  morefishes.command.fishrank:
+    description: Allows access to see the fish rank gui
