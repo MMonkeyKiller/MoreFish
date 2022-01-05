@@ -8,6 +8,7 @@ import me.monkeykiller.morefishes.listeners.Events;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MoreFishes extends JavaPlugin {
@@ -55,9 +56,13 @@ public class MoreFishes extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        for (Player player : Bukkit.getOnlinePlayers())
-            if (player.getOpenInventory().getTopInventory().getHolder() instanceof CustomHolder holder && holder.getId().equals("fish_rank"))
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            Inventory inv = player.getOpenInventory().getTopInventory();
+            if (CustomHolder.is(inv.getHolder(), null)) {
+                CustomHolder.dropInput(inv);
                 player.closeInventory();
+            }
+        }
         Utils.log(prefix + "Plugin disabled.");
     }
 }

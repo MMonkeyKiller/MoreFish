@@ -98,3 +98,7 @@ qualities:
   - id: "dndcraft:legendary_quality"
     display: "&4&lLegendary Quality"
     weight: 1
+
+gui_titles:
+  fish_rank: "Fish Rank"
+  appraise_fish: "Appraise Fish"

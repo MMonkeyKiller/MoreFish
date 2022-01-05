@@ -1,7 +1,7 @@
 package me.monkeykiller.morefishes;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 import java.util.Map;
@@ -14,24 +14,12 @@ public class MoreFishesConfig {
         return config.getBoolean("append_to_vanilla_fish_loot");
     }
 
-    public static void setAppendToVanillaFishLoot(boolean bool) {
-        config.set("append_to_vanilla_fish_loot", bool);
-    }
-
     public static double getCustomFishLootWeight() {
         return config.getDouble("custom_fish_loot_weight");
     }
 
-    public static void setCustomFishLootWeight(double lootWeight) {
-        config.set("custom_fish_loot_weight", lootWeight);
-    }
-
     public static String getWeightMeasure() {
         return config.getString("weight_measure", "oz");
-    }
-
-    public static void setWeightMeasure(@NotNull String measure) {
-        config.set("weight_measure", measure);
     }
 
     @SuppressWarnings("unchecked")
@@ -50,8 +38,15 @@ public class MoreFishesConfig {
     }
 
     public static List<Quality> getQualities() {
-        return getSerializedQualities().stream().map(Quality::deserialize)
-                .filter(Objects::nonNull).toList();
+        return getSerializedQualities().stream().map(Quality::deserialize).toList();
+    }
+
+    public static String getFishRankTitle() {
+        return config.getString("gui_titles.fish_rank");
+    }
+
+    public static String getAppraiseFishTitle() {
+        return config.getString("gui_titles.appraise_fish");
     }
 
     public static void reload() {

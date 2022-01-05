@@ -1,9 +1,15 @@
-## 🐟 MoreFishes
-Create your own fishes to the fishing loot
+## 🐟 More Fishes
+Add your own fishes to the vanilla fishing loot
 
-```
-NOTE: I don't know anything about fishing, i used some random examples for the default fishes in the config. They can be removed from the file and replaced by new ones without problems.
-```
+### 📋 Features
+- 🐠 **Create your own fishes** (only as items)
+- 🎨 Fully **customizable textures** with a **resourcepack** (CustomModelData)
+- 🎲 **Custom loot weight** for every fish
+- 🔬 **Customizable qualities** for the fish appraising process
+- 💡 **Fish appraising interface**
+- 🔧 **Simple configuration**
+- 🧾 Supports **Paper 1.17+**, without **any dependency**!
+
 
 ### ⌨ Commands
 `/morefishes`\
@@ -17,12 +23,12 @@ NOTE: I don't know anything about fishing, i used some random examples for the d
 - `/morefishes appraise`\
   👉 **Aliases:** `/appraise`\
   👉 **Permissions:** `morefishes.command.appraise`\
-  👉 **Description:** Allows access to appraise the fish on your hand
+  👉 **Description:** Allows access to an appraising fish GUI
 
 - `/morefishes rank`\
   👉 **Aliases:** `/fishrank`\
   👉 **Permissions:** `morefishes.command.fishrank`\
-  👉 **Description:** Allows access to the fish rank gui
+  👉 **Description:** Allows access to the fish rank GUI
 
 - `/morefishes reload`\
   👉 **Permissions:** `morefishes.command.reload`\

@@ -9,7 +9,6 @@ import org.bukkit.inventory.ItemStack;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class MoreFishesCommand extends BaseCommand {
@@ -84,6 +83,7 @@ public class MoreFishesCommand extends BaseCommand {
         if (args.length == 1) return List.of("give", "appraise", "rank", "reload");
         if (args.length == 2 && args[0].equalsIgnoreCase("give"))
             return CustomFish.getRegistry().stream().map(CustomFish::getId).toList();
+        if (args.length > 2 && args.length <= 4 && args[0].equalsIgnoreCase("give")) return List.of();
         return null;
     }
 }

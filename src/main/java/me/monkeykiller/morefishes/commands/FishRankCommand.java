@@ -19,6 +19,10 @@ public class FishRankCommand extends BaseCommand {
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
+        if (!sender.hasPermission("morefishes.command.fishrank")) {
+            sender.sendMessage(Utils.colorize("&cYou don't have permission to do this"));
+            return true;
+        }
         if (!(sender instanceof Player player)) {
             sender.sendMessage(Utils.colorize("&cYou're not a player"));
             return true;

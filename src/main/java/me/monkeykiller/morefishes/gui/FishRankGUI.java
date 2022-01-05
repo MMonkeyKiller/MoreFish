@@ -3,6 +3,7 @@ package me.monkeykiller.morefishes.gui;
 import com.destroystokyo.paper.profile.PlayerProfile;
 import com.destroystokyo.paper.profile.ProfileProperty;
 import me.monkeykiller.morefishes.FishStorage;
+import me.monkeykiller.morefishes.MoreFishesConfig;
 import me.monkeykiller.morefishes.Utils;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -42,7 +43,7 @@ public class FishRankGUI {
         List<FishStorage.Fish> fishes = FishStorage.getAll();
         fishes = fishes.subList(page, Math.min(page + FISHES_PER_PAGE, fishes.size()));
 
-        Inventory inv = Bukkit.createInventory(new CustomHolder("fish_rank"), 9 * 6, Utils.format("Fish Rank - Page " + (page + 1) + "/" + getTotalPages()));
+        Inventory inv = Bukkit.createInventory(new CustomHolder("fish_rank"), 9 * 6, Utils.format(MoreFishesConfig.getFishRankTitle() + " - Page " + (page + 1) + "/" + getTotalPages()));
         for (int i = 0; i < 9; i++) {
             ItemStack item = new ItemStack(Material.GRAY_STAINED_GLASS_PANE);
             item.editMeta(meta -> meta.displayName(Component.text(" ").asComponent()));
