@@ -21,19 +21,52 @@ fishes:
   # First, you need to replicate the following structure:
   # - id: string
   #   display_name: string            Item display name (You can use color codes)
-  #   lore: string || string[]        Item lore (You can use color codes)
+  #   lore: string[]                  Item lore (You can use color codes)
+  #   model_data: number (optional)   Item custom model data (for custom textures)
   #   material: string                Item type/material (see https://hub.spigotmc.org/javadocs/bukkit/org/bukkit/Material.html)
   #   fish_weight: (optional)
   #     min: (number)                 Set to 1 by default
   #     max: (number)                 Set to 10 by default
   #   loot_weight: number (optional)  Chance of the loot (more weight = more chance) Set to 1 by default
+  #   qualities: (optional)
+  #     - id: string                  Id of an existing quality
+  #       weight: number              Modify the weight for an existing quality (only applicable to this fish)
 
   - id: "dndcraft:example_fish"
     display_name: "&eExample Fish"
     lore:
       - "&bA really cool fish"
+    model_data: 1
     material: COD
     fish_weight:
       min: 3
       max: 10
     loot_weight: 3
+  - id: "dndcraft:troublesome_trout"
+    display_name: "&bTroublesome Trout"
+    lore:
+      - "A slick devilish fish"
+    material: SALMON
+    fish_weight:
+      min: 2
+      max: 15
+    loot_weight: 2
+    qualities:  # In this example always throws the legendary quality. (NOTE: You don't need to put all the qualities in this param. You can just modify whatever you want)
+      - id: "dndcraft:legendary_quality"
+        weight: 15
+      - id: "dndcraft:good_quality"
+        weight: 0
+      - id: "dndcraft:poor_quality"
+        weight: 0
+
+# Default quality threshold for every fish. You can customize it on every fish in the "qualities" param
+qualities:
+  - id: "dndcraft:poor_quality"
+    display: "&7&lPoor Quality"
+    weight: 3
+  - id: "dndcraft:good_quality"
+    display: "&6&lGood Quality"
+    weight: 2
+  - id: "dndcraft:legendary_quality"
+    display: "&4&lLegendary Quality"
+    weight: 1

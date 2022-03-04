@@ -35,6 +35,11 @@ public class MoreFishesConfig {
     }
 
     @SuppressWarnings("unchecked")
+    public static List<Map<String, Object>> getSerializedQualities() {
+        return (List<Map<String, Object>>) config.getList("qualities");
+    }
+
+    @SuppressWarnings("unchecked")
     public static List<Map<String, Object>> getSerializedCustomFishes() {
         return (List<Map<String, Object>>) config.getList("fishes");
     }
@@ -44,8 +49,14 @@ public class MoreFishesConfig {
                 .filter(Objects::nonNull).toList();
     }
 
+    public static List<Quality> getQualities() {
+        return getSerializedQualities().stream().map(Quality::deserialize)
+                .filter(Objects::nonNull).toList();
+    }
+
     public static void reload() {
         MoreFishes.getPlugin().reloadConfig();
+        MoreFishes.loadConfig();
     }
 
 }

@@ -3,3 +3,26 @@ version: '${project.version}'
 main: me.monkeykiller.morefishes.MoreFishes
 api-version: 1.17
 authors: [ MonkeyKiller ]
+
+commands:
+  morefishes:
+    aliases: [ mf, fishes ]
+    description: MoreFishes main command
+    permission: morefishes.command
+    usage: |
+      §cUsage:
+      §c/<command> give <id> [count] [weight]
+      §c/<command> appraise
+  appraise:
+    description: MoreFishes appraise command
+    permission: morefishes.command.appraise
+permissions:
+  morefishes.command.give:
+    description: Allows access to give custom fishes
+    default: op
+  morefishes.command.appraise:
+    description: Allows access to appraise custom fishes
+    default: op
+  morefishes.command.reload:
+    description: Allows access to reload the plugin configurations
+    default: op

@@ -23,7 +23,7 @@ public class Events implements Listener {
             if (MoreFishesConfig.getAppendToVanillaFishLoot() && !FISH_TYPES.contains(entityItem.getItemStack().getType()))
                 return;
             // Chance to obtain a custom fish (configurable)
-            if (MoreFishesConfig.getCustomFishLootWeight() > new Random().nextFloat()) {
+            if (MoreFishesConfig.getCustomFishLootWeight() > Math.random()) {
                 List<CustomFish> fishes = CustomFish.getRegistry(), lootFishes = new ArrayList<>();
                 if (fishes.size() == 0) return;
                 // Adding the fishes on another list x times based on their loot weight

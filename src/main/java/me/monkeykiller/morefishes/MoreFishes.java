@@ -1,5 +1,7 @@
 package me.monkeykiller.morefishes;
 
+import me.monkeykiller.morefishes.commands.AppraiseCommand;
+import me.monkeykiller.morefishes.commands.MoreFishesCommand;
 import me.monkeykiller.morefishes.listeners.Events;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -19,16 +21,23 @@ public class MoreFishes extends JavaPlugin {
     }
 
     public static void loadConfig() {
+        Quality.loadFromConfig();
         CustomFish.loadFromConfig();
+    }
+
+    public static void registerCommands() {
+        MoreFishesCommand.INSTANCE.register();
+        AppraiseCommand.INSTANCE.register();
     }
 
     @Override
     public void onEnable() {
+        plugin = this;
         config = getConfig();
         config.options().copyDefaults(true);
         saveDefaultConfig();
+        registerCommands();
         loadConfig();
-        plugin = this;
         Bukkit.getPluginManager().registerEvents(new Events(), this);
         Utils.log(prefix + "Plugin enabled.");
         Utils.log("&aLoaded", CustomFish.getRegistry().size() + "", "Custom Fishes");
